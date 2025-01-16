@@ -1,1 +1,0 @@
-global using GymManagement.Application.Services;

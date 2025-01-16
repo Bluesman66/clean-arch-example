@@ -1,5 +1,9 @@
 namespace GymManagement.Api.Endpoints;
 
+using System.Threading.Tasks;
+
+using MediatR;
+
 public static class SubscriptionEndpoints
 {
     public static void MapSubscriptionEndpoints(this IEndpointRouteBuilder app)
@@ -9,9 +13,11 @@ public static class SubscriptionEndpoints
         group.MapPost("/Subscriptions", CretateSubscription);
     }
 
-    private static IResult CretateSubscription(CreateSubsciptopnRequest request, ISubsrciptionService service)
+    private static async Task<IResult> CretateSubscription(CreateSubsciptopnRequest request, ISender sender)
     {
-        var subscriptionId = service.CretateSubscsrciption(request.SubscriptionType.ToString(), request.AdminId);
+        var command = new CreateSubscriptionCommand(request.SubscriptionType.ToString(), request.AdminId);
+
+        var subscriptionId = await sender.Send(command);
 
         var response = new SubscriptionResponce(subscriptionId, request.SubscriptionType);
 

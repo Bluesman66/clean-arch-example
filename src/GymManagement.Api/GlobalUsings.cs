@@ -4,4 +4,4 @@ global using GymManagement.Contracts.Subscription;
 global using GymManagement.Infrastructure;
 
 global using GymManagement.Application;
-global using GymManagement.Application.Services;
+global using GymManagement.Application.Subscriptions.Commands.CreateSubscription;
