@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManagement.Api", "GymManagement.Api\GymManagement.Api.csproj", "{382B1DE9-5AAF-4EF5-B264-7FE4AE6DF6F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManagement.Application", "GymManagement.Application\GymManagement.Application.csproj", "{8EA2E9F6-E8EC-4403-8A1D-32143FF5E7B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManagement.Domain", "GymManagement.Domain\GymManagement.Domain.csproj", "{0C7EE146-4BDC-49AA-A0F1-747A7DDC04DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManagement.Infrastructure", "GymManagement.Infrastructure\GymManagement.Infrastructure.csproj", "{0A6D09C6-B967-43C5-BCAF-21029E96CCC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManagement.Contracts", "GymManagement.Contracts\GymManagement.Contracts.csproj", "{8714CA9C-A87E-4525-B11B-472BD4B3BB00}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{382B1DE9-5AAF-4EF5-B264-7FE4AE6DF6F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{382B1DE9-5AAF-4EF5-B264-7FE4AE6DF6F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{382B1DE9-5AAF-4EF5-B264-7FE4AE6DF6F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{382B1DE9-5AAF-4EF5-B264-7FE4AE6DF6F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EA2E9F6-E8EC-4403-8A1D-32143FF5E7B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EA2E9F6-E8EC-4403-8A1D-32143FF5E7B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EA2E9F6-E8EC-4403-8A1D-32143FF5E7B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EA2E9F6-E8EC-4403-8A1D-32143FF5E7B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C7EE146-4BDC-49AA-A0F1-747A7DDC04DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C7EE146-4BDC-49AA-A0F1-747A7DDC04DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C7EE146-4BDC-49AA-A0F1-747A7DDC04DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C7EE146-4BDC-49AA-A0F1-747A7DDC04DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A6D09C6-B967-43C5-BCAF-21029E96CCC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A6D09C6-B967-43C5-BCAF-21029E96CCC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A6D09C6-B967-43C5-BCAF-21029E96CCC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A6D09C6-B967-43C5-BCAF-21029E96CCC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8714CA9C-A87E-4525-B11B-472BD4B3BB00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8714CA9C-A87E-4525-B11B-472BD4B3BB00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8714CA9C-A87E-4525-B11B-472BD4B3BB00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8714CA9C-A87E-4525-B11B-472BD4B3BB00}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
