@@ -1,7 +1,7 @@
 namespace GymManagement.Api.Endpoints;
 
 using System.Threading.Tasks;
-
+using ErrorOr;
 using MediatR;
 
 public static class SubscriptionEndpoints
@@ -15,12 +15,15 @@ public static class SubscriptionEndpoints
 
     private static async Task<IResult> CretateSubscription(CreateSubsciptopnRequest request, ISender sender)
     {
-        var command = new CreateSubscriptionCommand(request.SubscriptionType.ToString(), request.AdminId);
+        var command = new CreateSubscriptionCommand(
+            request.SubscriptionType.ToString(),
+            request.AdminId);
 
-        var subscriptionId = await sender.Send(command);
+        var createSubscriptionResult = await sender.Send(command);
 
-        var response = new SubscriptionResponce(subscriptionId, request.SubscriptionType);
-
-        return Results.Ok(response);
+        return createSubscriptionResult.MatchFirst(
+            guid => Results.Ok(new SubscriptionResponce(guid, request.SubscriptionType)),
+            error => Results.Problem()
+        );
     }
 }
