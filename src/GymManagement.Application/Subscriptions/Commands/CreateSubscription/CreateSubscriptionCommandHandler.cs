@@ -4,10 +4,33 @@ using ErrorOr;
 
 using MediatR;
 
-public class CreateSubscriptionCommandHandler : IRequestHandler<CreateSubscriptionCommand, ErrorOr<Guid>>
+public class CreateSubscriptionCommandHandler : IRequestHandler<CreateSubscriptionCommand, ErrorOr<Subscription>>
 {
-    public async Task<ErrorOr<Guid>> Handle(CreateSubscriptionCommand request, CancellationToken cancellationToken)
+    private readonly ISubscriptionsRepository _subscriptionsRepository;
+    // private readonly IUnitOfWork _unitOfWork;
+
+    public CreateSubscriptionCommandHandler(ISubscriptionsRepository subscriptionsRepository
+    // , IUnitOfWork unitOfWork
+    )
     {
-        return await Task.FromResult(Guid.NewGuid());
+        _subscriptionsRepository = subscriptionsRepository;
+        // _unitOfWork = unitOfWork;
+    }
+
+    public async Task<ErrorOr<Subscription>> Handle(CreateSubscriptionCommand request, CancellationToken cancellationToken)
+    {
+        // Create a subscription
+        var subscription = new Subscription
+        {
+            Id = Guid.NewGuid(),
+            SubscriptionType = request.SubscriptionType
+        };
+
+        // Add it to the database
+        await _subscriptionsRepository.AddSubscriptionAsync(subscription);
+        // await _unitOfWork.CommitChangesAsync();
+
+        // Return subscription
+        return subscription;
     }
 }

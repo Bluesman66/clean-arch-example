@@ -4,4 +4,4 @@ using ErrorOr;
 
 using MediatR;
 
-public record CreateSubscriptionCommand(string SubscriptionType, Guid AdminId) : IRequest<ErrorOr<Guid>>;
+public record CreateSubscriptionCommand(string SubscriptionType, Guid AdminId) : IRequest<ErrorOr<Subscription>>;
