@@ -16,8 +16,15 @@ public static class SubscriptionEndpoints
 
     private static async Task<IResult> CretateSubscription(CreateSubsciptopnRequest request, ISender sender)
     {
+        if (!DomainSubscriptionType.TryFromName(request.SubscriptionType.ToString(), out var subscriptionType))
+        {
+            return Results.Problem(
+                statusCode: StatusCodes.Status400BadRequest,
+                detail: "Invalid subscription type");
+        }
+
         var command = new CreateSubscriptionCommand(
-            request.SubscriptionType.ToString(),
+            subscriptionType,
             request.AdminId);
 
         var createSubscriptionResult = await sender.Send(command);
@@ -38,7 +45,7 @@ public static class SubscriptionEndpoints
         return getSubscriptionResult.MatchFirst(
             subscription => Results.Ok(new SubscriptionResponce(
                 subscription.Id,
-                Enum.Parse<SubscriptionType>(subscription.SubscriptionType))),
+                Enum.Parse<SubscriptionType>(subscription.SubscriptionType.Name))),
             error => Results.Problem(error.Description));
     }
 }
