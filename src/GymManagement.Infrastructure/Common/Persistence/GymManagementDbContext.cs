@@ -1,21 +1,22 @@
 namespace GymManagement.Infrastructure.Common.Persistence;
 
 using System.Reflection;
-using System.Threading.Tasks;
 
 using Microsoft.EntityFrameworkCore;
 
 public class GymManagementDbContext : DbContext, IUnitOfWork
 {
+    public DbSet<Admin> Admins { get; set; } = null!;
+    public DbSet<Subscription> Subscriptions { get; set; } = null!;
+    public DbSet<Gym> Gyms { get; set; } = null!;
+
     public GymManagementDbContext(DbContextOptions options) : base(options)
     {
     }
 
-    public DbSet<Subscription> Subscriptions { get; set; } = null!;
-
     public async Task CommitChangesAsync()
     {
-        await base.SaveChangesAsync();
+        await SaveChangesAsync();
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
