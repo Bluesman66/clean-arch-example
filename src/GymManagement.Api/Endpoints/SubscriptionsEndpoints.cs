@@ -37,7 +37,7 @@ public static class SubscriptionsEndpoints
                 new SubscriptionResponce(
                     subscription.Id,
                     ToDto(subscription.SubscriptionType))),
-            _ => Results.Problem());
+            ApiResults.Problem);
     }
 
     private static async Task<IResult> GetSubscription(Guid subscriptionId, ISender mediator)
@@ -50,7 +50,7 @@ public static class SubscriptionsEndpoints
             subscription => Results.Ok(new SubscriptionResponce(
                 subscription.Id,
                 ToDto(subscription.SubscriptionType))),
-            _ => Results.Problem());
+            ApiResults.Problem);
     }
 
     public static async Task<IResult> DeleteSubscription(Guid subscriptionId, ISender mediator)
@@ -61,7 +61,7 @@ public static class SubscriptionsEndpoints
 
         return deleteSubscriptionResult.Match(
             _ => Results.NoContent(),
-            _ => Results.Problem());
+            ApiResults.Problem);
     }
 
     private static SubscriptionType ToDto(DomainSubscriptionType subscriptionType)

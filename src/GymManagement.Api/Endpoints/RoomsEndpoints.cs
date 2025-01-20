@@ -24,7 +24,7 @@ public static class RoomsEndpoints
 
         return createRoomResult.Match(
             room => Results.Ok(new RoomResponse(room.Id, room.Name)),
-            _ => Results.Problem());
+            ApiResults.Problem);
     }
 
     private static async Task<IResult> DeleteRoom(Guid gymId, Guid roomId, ISender mediator)
@@ -35,6 +35,6 @@ public static class RoomsEndpoints
 
         return deleteRoomResult.Match(
             _ => Results.NoContent(),
-            _ => Results.Problem());
+            ApiResults.Problem);
     }
 }

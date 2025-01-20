@@ -23,7 +23,7 @@ public static class GymsEndpoints
 
         return createGymResult.Match(
             gym => Results.Ok(new GymResponse(gym.Id, gym.Name)),
-            _ => Results.Problem());
+            ApiResults.Problem);
     }
 
     public static async Task<IResult> ListGyms(Guid subscriptionId, ISender mediator)
@@ -34,7 +34,7 @@ public static class GymsEndpoints
 
         return listGymsResult.Match(
             gyms => Results.Ok(gyms.ConvertAll(gym => new GymResponse(gym.Id, gym.Name))),
-            _ => Results.Problem());
+            ApiResults.Problem);
     }
 
     public static async Task<IResult> GetGym(Guid subscriptionId, Guid gymId, ISender mediator)
@@ -45,7 +45,7 @@ public static class GymsEndpoints
 
         return getGymResult.Match(
             gym => Results.Ok(new GymResponse(gym.Id, gym.Name)),
-            _ => Results.Problem());
+            ApiResults.Problem);
     }
 
     public static async Task<IResult> DeleteGym(Guid subscriptionId, Guid gymId, ISender mediator)
@@ -56,7 +56,7 @@ public static class GymsEndpoints
 
         return deleteGymResult.Match(
             _ => Results.NoContent(),
-            _ => Results.Problem());
+            ApiResults.Problem);
     }
 
     public static async Task<IResult> AddTrainer(AddTrainerRequest request, Guid subscriptionId, Guid gymId, ISender mediator)
@@ -67,6 +67,6 @@ public static class GymsEndpoints
 
         return addTrainerResult.Match(
             _ => Results.Ok(),
-            _ => Results.Problem());
+            ApiResults.Problem);
     }
 }
